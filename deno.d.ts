@@ -53,7 +53,7 @@ declare interface PerformanceMeasureOptions {
   detail?: any;
 
   /** Timestamp to be used as the start time or string to be used as start
-   * mark.*/
+   * mark. */
   start?: string | number;
 
   /** Duration between the start and end times. */
@@ -102,7 +102,7 @@ declare namespace Deno {
      * `only` set to true and fail the test suite. */
     only?: boolean;
     /** Check that the number of async completed ops after the test is the same
-     * as number of dispatched ops. Defaults to true.*/
+     * as number of dispatched ops. Defaults to true. */
     sanitizeOps?: boolean;
     /** Ensure the test case does not "leak" resources - ie. the resource table
      * after the test has exactly the same contents as before the test. Defaults
@@ -164,7 +164,7 @@ declare namespace Deno {
    *   assertEquals(decoder.decode(data), "Hello world");
    * });
    * ```
-   * */
+   */
   export function test(name: string, fn: () => void | Promise<void>): void;
 
   /** Exit the Deno process with optional exit code. If no exit code is supplied
@@ -276,7 +276,6 @@ declare namespace Deno {
   export function linkSync(oldpath: string, newpath: string): void;
 
   /**
-   *
    * Creates `newpath` as a hard link to `oldpath`.
    *
    * ```ts
@@ -426,7 +425,7 @@ declare namespace Deno {
 
   /**
    * @deprecated Use iter from https://deno.land/std/io/util.ts instead. Deno.iter will be removed in Deno 2.0.
-   * 
+   *
    * Turns a Reader, `r`, into an async iterator.
    *
    * ```ts
@@ -465,7 +464,7 @@ declare namespace Deno {
 
   /**
    * @deprecated Use iterSync from https://deno.land/std/io/util.ts instead. Deno.iterSync will be removed in Deno 2.0.
-   * 
+   *
    * Turns a ReaderSync, `r`, into an iterator.
    *
    * ```ts
@@ -808,7 +807,7 @@ declare namespace Deno {
      * any write calls on it will overwrite its contents, by default without
      * truncating it. */
     write?: boolean;
-    /**Sets the option for the append mode. This option, when `true`, means that
+    /** Sets the option for the append mode. This option, when `true`, means that
      * writes will append to a file instead of overwriting previous contents.
      * Note that setting `{ write: true, append: true }` has the same effect as
      * setting only `{ append: true }`. */
@@ -834,7 +833,6 @@ declare namespace Deno {
   }
 
   /**
-   *
    *  Check if a given resource id (`rid`) is a TTY.
    *
    * ```ts
@@ -851,7 +849,7 @@ declare namespace Deno {
 
   /**
    * @deprecated Use Buffer from https://deno.land/std/io/buffer.ts instead. Deno.Buffer will be removed in Deno 2.0.
-   * 
+   *
    * A variable-sized buffer of bytes with `read()` and `write()` methods.
    *
    * Deno.Buffer is almost always used with some I/O like files and sockets. It
@@ -934,7 +932,7 @@ declare namespace Deno {
 
   /**
    * @deprecated Use readAll from https://deno.land/std/io/util.ts instead. Deno.readAll will be removed in Deno 2.0.
-   * 
+   *
    * Read Reader `r` until EOF (`null`) and resolve to the content as
    * Uint8Array`.
    *
@@ -958,7 +956,7 @@ declare namespace Deno {
 
   /**
    * @deprecated Use readAllSync from https://deno.land/std/io/util.ts instead. Deno.readAllSync will be removed in Deno 2.0.
-   * 
+   *
    * Synchronously reads Reader `r` until EOF (`null`) and returns the content
    * as `Uint8Array`.
    *
@@ -982,7 +980,7 @@ declare namespace Deno {
 
   /**
    * @deprecated Use writeAll from https://deno.land/std/io/util.ts instead. Deno.readAll will be removed in Deno 2.0.
-   * 
+   *
    * Write all the content of the array buffer (`arr`) to the writer (`w`).
    *
    * ```ts
@@ -1007,7 +1005,7 @@ declare namespace Deno {
 
   /**
    * @deprecated Use writeAllSync from https://deno.land/std/io/util.ts instead. Deno.writeAllSync will be removed in Deno 2.0.
-   * 
+   *
    * Synchronously write all the content of the array buffer (`arr`) to the
    * writer (`w`).
    *
@@ -1449,7 +1447,7 @@ declare namespace Deno {
    *
    * Requires `allow-read` permission for the target path.
    * Also requires `allow-read` permission for the CWD if the target path is
-   * relative.*/
+   * relative. */
   export function realPathSync(path: string): string;
 
   /** Resolves to the absolute normalized path, with symbolic links resolved.
@@ -1465,7 +1463,7 @@ declare namespace Deno {
    *
    * Requires `allow-read` permission for the target path.
    * Also requires `allow-read` permission for the CWD if the target path is
-   * relative.*/
+   * relative. */
   export function realPath(path: string): Promise<string>;
 
   export interface DirEntry {
@@ -1944,7 +1942,7 @@ declare namespace Deno {
    *    console.log(">>>> event", event);
    *    // { kind: "create", paths: [ "/foo.txt" ] }
    * }
-   *```
+   * ```
    *
    * Requires `allow-read` permission.
    */
@@ -1984,7 +1982,7 @@ declare namespace Deno {
      * ]);
      * p.close();
      * ```
-     **/
+     */
     status(): Promise<ProcessStatus>;
     /** Buffer the stdout until EOF and return it as `Uint8Array`.
      *
@@ -2120,7 +2118,6 @@ declare namespace Deno {
    * Finally, you can also specify the depth to which it will format.
    *
    *      Deno.inspect({a: {b: {c: {d: 'hello'}}}}, {depth: 2}); // { a: { b: [Object] } }
-   *
    */
   export function inspect(value: unknown, options?: InspectOptions): string;
 
@@ -2350,7 +2347,7 @@ declare namespace Deno {
    * if the file previously was larger than this new length, the extra  data  is  lost.
    *
    * if  the  file  previously  was shorter, it is extended, and the extended part reads as null bytes ('\0').
-   * 
+   *
    * ```ts
    * // truncate the entire file
    * const file = Deno.open("my_file.txt", { read: true, write: true, truncate: true, create: true });
@@ -2392,7 +2389,7 @@ declare namespace Deno {
    */
   export function ftruncate(rid: number, len?: number): Promise<void>;
 
-  /** 
+  /**
    * Synchronously returns a `Deno.FileInfo` for the given file stream.
    *
    * ```ts
@@ -2535,7 +2532,6 @@ declare class URLSearchParams {
    *   console.log(value, key, parent);
    * });
    * ```
-   *
    */
   forEach(
     callbackfn: (value: string, key: string, parent: this) => void,
@@ -2645,54 +2641,54 @@ interface EventInit {
 declare class Event {
   constructor(type: string, eventInitDict?: EventInit);
   /** Returns true or false depending on how event was initialized. True if
-     * event goes through its target's ancestors in reverse tree order, and
-     * false otherwise. */
+   * event goes through its target's ancestors in reverse tree order, and
+   * false otherwise. */
   readonly bubbles: boolean;
   cancelBubble: boolean;
   /** Returns true or false depending on how event was initialized. Its return
-     * value does not always carry meaning, but true can indicate that part of the
-     * operation during which event was dispatched, can be canceled by invoking
-     * the preventDefault() method. */
+   * value does not always carry meaning, but true can indicate that part of the
+   * operation during which event was dispatched, can be canceled by invoking
+   * the preventDefault() method. */
   readonly cancelable: boolean;
   /** Returns true or false depending on how event was initialized. True if
-     * event invokes listeners past a ShadowRoot node that is the root of its
-     * target, and false otherwise. */
+   * event invokes listeners past a ShadowRoot node that is the root of its
+   * target, and false otherwise. */
   readonly composed: boolean;
   /** Returns the object whose event listener's callback is currently being
-     * invoked. */
+   * invoked. */
   readonly currentTarget: EventTarget | null;
   /** Returns true if preventDefault() was invoked successfully to indicate
-     * cancellation, and false otherwise. */
+   * cancellation, and false otherwise. */
   readonly defaultPrevented: boolean;
   /** Returns the event's phase, which is one of NONE, CAPTURING_PHASE,
-     * AT_TARGET, and BUBBLING_PHASE. */
+   * AT_TARGET, and BUBBLING_PHASE. */
   readonly eventPhase: number;
   /** Returns true if event was dispatched by the user agent, and false
-     * otherwise. */
+   * otherwise. */
   readonly isTrusted: boolean;
   /** Returns the object to which event is dispatched (its target). */
   readonly target: EventTarget | null;
   /** Returns the event's timestamp as the number of milliseconds measured
-     * relative to the time origin. */
+   * relative to the time origin. */
   readonly timeStamp: number;
   /** Returns the type of event, e.g. "click", "hashchange", or "submit". */
   readonly type: string;
   /** Returns the invocation target objects of event's path (objects on which
-     * listeners will be invoked), except for any nodes in shadow trees of which
-     * the shadow root's mode is "closed" that are not reachable from event's
-     * currentTarget. */
+   * listeners will be invoked), except for any nodes in shadow trees of which
+   * the shadow root's mode is "closed" that are not reachable from event's
+   * currentTarget. */
   composedPath(): EventTarget[];
   /** If invoked when the cancelable attribute value is true, and while
-     * executing a listener for the event with passive set to false, signals to
-     * the operation that caused event to be dispatched that it needs to be
-     * canceled. */
+   * executing a listener for the event with passive set to false, signals to
+   * the operation that caused event to be dispatched that it needs to be
+   * canceled. */
   preventDefault(): void;
   /** Invoking this method prevents event from reaching any registered event
-     * listeners after the current one finishes running and, when dispatched in a
-     * tree, also prevents event from reaching any other objects. */
+   * listeners after the current one finishes running and, when dispatched in a
+   * tree, also prevents event from reaching any other objects. */
   stopImmediatePropagation(): void;
   /** When dispatched in a tree, invoking this method prevents event from
-     * reaching any objects other than the current object. */
+   * reaching any objects other than the current object. */
   stopPropagation(): void;
   readonly AT_TARGET: number;
   readonly BUBBLING_PHASE: number;
@@ -2705,9 +2701,9 @@ declare class Event {
 }
 
 /**
-   * EventTarget is a DOM interface implemented by objects that can receive events
-   * and may have listeners for them.
-   */
+ * EventTarget is a DOM interface implemented by objects that can receive events
+ * and may have listeners for them.
+ */
 declare class EventTarget {
   /** Appends an event listener for events whose type attribute value is type.
    * The callback argument sets the callback that will be invoked when the event
@@ -2834,7 +2830,7 @@ declare class AbortController {
   /** Returns the AbortSignal object associated with this object. */
   readonly signal: AbortSignal;
   /** Invoking this method will set this object's AbortSignal's aborted flag and
-    * signal to any observers that the associated activity is to be aborted. */
+   * signal to any observers that the associated activity is to be aborted. */
   abort(): void;
 }
 
@@ -2843,10 +2839,10 @@ interface AbortSignalEventMap {
 }
 
 /** A signal object that allows you to communicate with a DOM request (such as a
-  * Fetch) and abort it if required via an AbortController object. */
+ * Fetch) and abort it if required via an AbortController object. */
 interface AbortSignal extends EventTarget {
   /** Returns true if this AbortSignal's AbortController has signaled to abort,
-    * and false otherwise. */
+   * and false otherwise. */
   readonly aborted: boolean;
   onabort: ((this: AbortSignal, ev: Event) => any) | null;
   addEventListener<K extends keyof AbortSignalEventMap>(
@@ -5066,7 +5062,7 @@ declare namespace WebAssembly {
     /**
      * Given a `Module` and string, returns a copy of the contents of all custom sections in the
      * module with the given string name.
-     * */
+     */
     static customSections(
       moduleObject: Module,
       sectionName: string,
@@ -5471,7 +5467,7 @@ declare interface PerformanceMeasureOptions {
   detail?: any;
 
   /** Timestamp to be used as the start time or string to be used as start
-   * mark.*/
+   * mark. */
   start?: string | number;
 
   /** Duration between the start and end times. */

@@ -7,4 +7,7 @@ export interface BazxExecConfig {
   signal?: AbortSignal;
 }
 
-export type BazxExec = (cmd: [string, ...string[]], options?: BazxExecConfig) => Promise<{ code: number }>;
+export type BazxExec = (
+  cmd: [string, ...string[]],
+  options?: BazxExecConfig,
+) => Promise<{ code: number }>;
